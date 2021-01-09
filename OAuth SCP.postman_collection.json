@@ -1,0 +1,186 @@
+{
+	"info": {
+		"_postman_id": "b34d3023-f367-4a67-8c56-fe404aeee9d0",
+		"name": "APIM",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "AssignMsg",
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "id",
+							"value": "2",
+							"type": "text"
+						},
+						{
+							"key": "hello",
+							"value": "world",
+							"type": "text",
+							"disabled": true
+						}
+					]
+				},
+				"url": {
+					"raw": "https://4ff6b5aatrial-trial.integrationsuitetrial-apim.eu10.hana.ondemand.com:443/4ff6b5aatrial/amsg/v1",
+					"protocol": "https",
+					"host": [
+						"4ff6b5aatrial-trial",
+						"integrationsuitetrial-apim",
+						"eu10",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"port": "443",
+					"path": [
+						"4ff6b5aatrial",
+						"amsg",
+						"v1"
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "Calculator",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "Content-Type",
+						"value": "text/xml",
+						"type": "text"
+					}
+				],
+				"body": {
+					"mode": "raw",
+					"raw": "<?xml version=\"1.0\" encoding=\"utf-8\"?>\n<soap:Envelope xmlns:xsi=\"http://www.w3.org/2001/XMLSchema-instance\" xmlns:xsd=\"http://www.w3.org/2001/XMLSchema\" xmlns:soap=\"http://schemas.xmlsoap.org/soap/envelope/\">\n  <soap:Body>\n    <Add xmlns=\"http://tempuri.org/\">\n      <intA>10</intA>\n      <intB>20</intB>\n    </Add>\n  </soap:Body>\n</soap:Envelope>",
+					"options": {
+						"raw": {
+							"language": "xml"
+						}
+					}
+				},
+				"url": {
+					"raw": "http://www.dneonline.com/calculator.asmx?op=Add",
+					"protocol": "http",
+					"host": [
+						"www",
+						"dneonline",
+						"com"
+					],
+					"path": [
+						"calculator.asmx"
+					],
+					"query": [
+						{
+							"key": "op",
+							"value": "Add"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth In SCP",
+			"request": {
+				"auth": {
+					"type": "basic",
+					"basic": [
+						{
+							"key": "password",
+							"value": "8c1d7d60-d61f-47ec-bb05-8375bf686166$Pl-DmGyA584AjUZOrIGXLDniHMdvlaEMvYnLwyrGOSM=",
+							"type": "string"
+						},
+						{
+							"key": "username",
+							"value": "sb-c3fa46a0-8e71-41a2-aa98-90f1df90dc17!b72336|it-rt-4ff6b5aatrial!b44075",
+							"type": "string"
+						}
+					]
+				},
+				"method": "GET",
+				"header": [
+					{
+						"key": "grant-types",
+						"value": "client_credentials",
+						"type": "text",
+						"disabled": true
+					}
+				],
+				"url": {
+					"raw": "https://4ff6b5aatrial.authentication.eu10.hana.ondemand.com/oauth/token?grant_type=client_credentials",
+					"protocol": "https",
+					"host": [
+						"4ff6b5aatrial",
+						"authentication",
+						"eu10",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"oauth",
+						"token"
+					],
+					"query": [
+						{
+							"key": "grant_type",
+							"value": "client_credentials"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "OAuth POST request",
+			"request": {
+				"auth": {
+					"type": "bearer",
+					"bearer": [
+						{
+							"key": "token",
+							"value": "eyJhbGciOiJSUzI1NiIsImprdSI6Imh0dHBzOi8vNGZmNmI1YWF0cmlhbC5hdXRoZW50aWNhdGlvbi5ldTEwLmhhbmEub25kZW1hbmQuY29tL3Rva2VuX2tleXMiLCJraWQiOiJkZWZhdWx0LWp3dC1rZXktMjEzNjgxNjgwNiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiI2ZjVjZDY2ZjAwNDc0MmM2YTU1MDExMTg1ZDQ4MGJmMyIsImV4dF9hdHRyIjp7ImVuaGFuY2VyIjoiWFNVQUEiLCJzdWJhY2NvdW50aWQiOiI5Y2RmNGYwZC05NzEyLTQxY2ItOTE5OS1iNmEyNzI1NDczOGUiLCJ6ZG4iOiI0ZmY2YjVhYXRyaWFsIiwic2VydmljZWluc3RhbmNlaWQiOiJjM2ZhNDZhMC04ZTcxLTQxYTItYWE5OC05MGYxZGY5MGRjMTcifSwic3ViIjoic2ItYzNmYTQ2YTAtOGU3MS00MWEyLWFhOTgtOTBmMWRmOTBkYzE3IWI3MjMzNnxpdC1ydC00ZmY2YjVhYXRyaWFsIWI0NDA3NSIsImF1dGhvcml0aWVzIjpbInVhYS5yZXNvdXJjZSIsIml0LXJ0LTRmZjZiNWFhdHJpYWwhYjQ0MDc1LkVTQk1lc3NhZ2luZy5zZW5kIl0sInNjb3BlIjpbInVhYS5yZXNvdXJjZSIsIml0LXJ0LTRmZjZiNWFhdHJpYWwhYjQ0MDc1LkVTQk1lc3NhZ2luZy5zZW5kIl0sImNsaWVudF9pZCI6InNiLWMzZmE0NmEwLThlNzEtNDFhMi1hYTk4LTkwZjFkZjkwZGMxNyFiNzIzMzZ8aXQtcnQtNGZmNmI1YWF0cmlhbCFiNDQwNzUiLCJjaWQiOiJzYi1jM2ZhNDZhMC04ZTcxLTQxYTItYWE5OC05MGYxZGY5MGRjMTchYjcyMzM2fGl0LXJ0LTRmZjZiNWFhdHJpYWwhYjQ0MDc1IiwiYXpwIjoic2ItYzNmYTQ2YTAtOGU3MS00MWEyLWFhOTgtOTBmMWRmOTBkYzE3IWI3MjMzNnxpdC1ydC00ZmY2YjVhYXRyaWFsIWI0NDA3NSIsImdyYW50X3R5cGUiOiJjbGllbnRfY3JlZGVudGlhbHMiLCJyZXZfc2lnIjoiYTFiNmI5MTgiLCJpYXQiOjE2MTAxNzgzNDMsImV4cCI6MTYxMDE4MjU0MywiaXNzIjoiaHR0cHM6Ly80ZmY2YjVhYXRyaWFsLmF1dGhlbnRpY2F0aW9uLmV1MTAuaGFuYS5vbmRlbWFuZC5jb20vb2F1dGgvdG9rZW4iLCJ6aWQiOiI5Y2RmNGYwZC05NzEyLTQxY2ItOTE5OS1iNmEyNzI1NDczOGUiLCJhdWQiOlsiaXQtcnQtNGZmNmI1YWF0cmlhbCFiNDQwNzUuRVNCTWVzc2FnaW5nIiwidWFhIiwic2ItYzNmYTQ2YTAtOGU3MS00MWEyLWFhOTgtOTBmMWRmOTBkYzE3IWI3MjMzNnxpdC1ydC00ZmY2YjVhYXRyaWFsIWI0NDA3NSJdfQ.iHQJvPIt7jHMcQD0sk7AXkTNt31UcYy4WFqp1MVzwhAdcVGMZNk0S3nxDGO-u75VPeyLXJIvbhj3T67GQigLARZXh2KgcAw05v5xzG9w-yNQan_oRGztfTg_kHHoZWN4YlExawTXIAVh38HbJYmN0ZtSATXgz4vei5BLPeU3O_JsNKu_SOKT2Tzb64k-jxm6p-n_w_t0-jckdfqnXsNdEGXwS_BDlfeHte1v_4Rg7jqzCuAHvGPcC1oxzJjAso2nJUL8HkWpPNzguRVKQAKMkZX-OdhY1RtrlJeTLxhZeu7FLjvLL_gks0xexYJ2UPv2hMLd0OyAec-uxWs4l9rdHA",
+							"type": "string"
+						}
+					]
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "hello"
+				},
+				"url": {
+					"raw": "https://4ff6b5aatrial.it-cpitrial02-rt.cfapps.eu10-001.hana.ondemand.com/http/oauth",
+					"protocol": "https",
+					"host": [
+						"4ff6b5aatrial",
+						"it-cpitrial02-rt",
+						"cfapps",
+						"eu10-001",
+						"hana",
+						"ondemand",
+						"com"
+					],
+					"path": [
+						"http",
+						"oauth"
+					]
+				}
+			},
+			"response": []
+		}
+	]
+}
